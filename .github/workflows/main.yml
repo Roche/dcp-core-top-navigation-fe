@@ -1,0 +1,72 @@
+name: Container Build
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  container-build:
+    runs-on: ubuntu-latest
+
+    env:
+      REGISTRY: ghcr.io
+
+    steps:
+      # Check out repository so Dockerfile and build context exist
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Create an empty .npmrc file if not present so Docker COPY doesn't fail
+      - name: Create empty .npmrc
+        run: touch .npmrc
+        
+      # Load the committed file into GITHUB_ENV
+      - name: Load environment variables from file
+        run: |
+          if [ -f variables.env ]; then
+            # Strips empty lines and comments (#) before appending
+            grep -v '^\s*#' variables.env | grep -v '^\s*$' >> "$GITHUB_ENV"
+          else
+            echo "::error::variables.env file not found"
+            exit 1
+          fi
+          
+      # Lowercase repository name for GHCR compliance
+      - name: Prepare image name
+        id: image_meta
+        run: |
+          IMAGE_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "image=${{ env.REGISTRY }}/${IMAGE_NAME}" >> "$GITHUB_OUTPUT"
+
+      # Log in to GitHub Container Registry
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Set up Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Build and push image
+      - name: Build and push container image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
+          no-cache: true
+          push: true
+          build-args: |
+            BASE_IMAGE_VERSION=${{ env.BASE_IMAGE_VERSION }}
+            BASE_IMAGE_NAME=${{ env.BASE_IMAGE_NAME }}
+          tags: |
+            ${{ steps.image_meta.outputs.image }}:${{ env.APP_VERSION }}
+            ${{ steps.image_meta.outputs.image }}:latest
