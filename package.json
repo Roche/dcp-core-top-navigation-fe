@@ -44,7 +44,7 @@
     "@open-dcp/utilities": ">=1.1.2",
     "bootstrap": "4.6.0",
     "core-js": "3.12.1",
-    "lodash": "4.17.15",
+    "lodash": "4.18.1",
     "moment": "2.29.4",
     "moment-timezone": "^0.6.3",
     "ngx-device-detector": "7.0.0",
