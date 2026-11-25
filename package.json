@@ -45,7 +45,7 @@
     "bootstrap": "4.6.0",
     "core-js": "3.12.1",
     "lodash": "4.17.15",
-    "moment": "2.29.4",
+    "moment": "2.31.0",
     "moment-timezone": "^0.6.3",
     "ngx-device-detector": "7.0.0",
     "ngx-permissions": "17.1.0",
