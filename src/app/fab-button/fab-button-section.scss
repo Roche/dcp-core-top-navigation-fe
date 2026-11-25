@@ -1,0 +1,47 @@
+.imo-trigger {
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+.fab-button {
+  &_section {
+    opacity: .3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: end;
+    z-index: 20000;
+    transition: opacity .3s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &_trigger {
+    --mdc-fab-small-container-shape: 12px;
+    .mat-icon {
+      transition: rotate .2s ease !important;
+    }
+    &--active {
+      .mat-icon {
+        rotate: 765deg !important;
+      }
+    }
+  }
+  &_element {
+    display: none;
+    transform: scaleY(0);
+    transition: transform .2s ease-in-out, display .2s ease allow-discrete;
+    &--active {
+      transform: scaleY(1);
+      display: block;
+      @starting-style {
+        transform: scaleY(0);
+      }
+    }
+  }
+
+  &_imo-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+}

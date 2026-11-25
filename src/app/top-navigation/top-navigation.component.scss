@@ -1,0 +1,119 @@
+@use '@angular/material' as mat;
+@import "../../assets/styles/variables";
+
+:host {}
+
+// Top-navigation does not define .color-primary itself; it used to inherit it from
+// whichever app loaded last (e.g. DReAM sets a fixed blue with !important). This
+// component-scoped rule is more specific, so the runtime colour wins. Default = #0066cc.
+.color-primary {
+  color: var(--dcp-branding-primary-color, #{$primary-dc}) !important;
+}
+
+
+.docs-navbar-header {
+  width: calc(100vw - var(--side-menu-min-width));
+  margin-left: 80px;
+
+  height: var(--header-height);
+  background: mat.get-color-from-palette($mat-white, 50);
+
+  &_href {
+    min-width: 40px;
+  }
+
+  &_wrapper {
+    padding-left: var(--main-padding);
+    padding-right: var(--main-padding);
+  }
+
+  &_title {
+    color: var(--dcp-branding-primary-color, #{$primary-dc});
+    font-weight: bold !important;
+    padding-left: var(--main-padding);
+  }
+
+  &_logo {
+    padding-right: var(--main-padding);
+  }
+
+  &_select {
+    background-color: mat.get-color-from-palette($mat-white, 50);
+    border: 1px solid mat.get-color-from-palette($mat-white, A400, .5);
+    border-radius: 2px;
+    height: 30px;
+
+    &_label {
+      color: mat.get-color-from-palette($mat-white, A400);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    &_button {
+      height: 30px !important;
+      min-width: 30px;
+      line-height: 31px;
+      padding-right: 0;
+      text-transform: uppercase;
+      color: mat.get-color-from-palette($mat-black, A200);
+      font-size: 10px;
+      font-weight: 700;
+
+      mat-icon {
+        color: mat.get-color-from-palette($mat-white, A400);
+        font-size: 17px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+.username-header-holder {
+  font-size: 12px;
+  margin: 0 5px;
+}
+
+.sites-ddl {
+  display: inline-block;
+  min-width: 85px;
+}
+
+.main-content {
+  &-wrapper {
+    margin-left: 80px;
+  }
+  &-router {
+    height: calc(100vh - var(--header-height));
+    overflow: auto;
+  }
+}
+
+.custom-sidedrwawer-width-460 {
+  width: calc(100% - 460px);
+}
+
+.custom-sidedrwawer-width-920 {
+  width: calc(100% - 920px);
+}
+
+.disabled {
+  color: $roche_grey_2
+}
+
+#dcpHelpContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent !important;
+  &.opened {
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+  }
+}
+
+a.mat-mdc-menu-item {
+  text-decoration: none;
+}

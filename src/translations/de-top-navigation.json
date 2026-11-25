@@ -1,0 +1,41 @@
+{
+  "DIGITAL_CLONE_LOGO_ALT": "Data Computation Platform",
+  "LOGOUT": "Logout",
+  "SETTINGS": "Einstellungen",
+  "en": "English",
+  "de": "Deutsch",
+  "UPDATE": "Aktualisieren",
+  "PRODUCTION_SITE": "Betriebsstätte",
+  "LANGUAGE": "Sprache",
+  "DATE_FORMAT": "Datumsformat",
+  "TIME_FORMAT": "Zeitformat",
+  "SIDE_MENU": {
+    "API_SERVICE": "API-Dienst"
+  },
+  "DETAILED_EXPLANATION": "Ausführliche Erklärung",
+  "VALIDATIONS": {
+    "CHROME_BROWSER_NOTIFICATION": "Ihr Browser wird nicht unterstützt.\n\n Wir empfehlen, die aktuellste Version von Google Chrome zu verwenden."
+  },
+  "ERROR": {
+    "IDLE_ERROR_TITLE": "Sitzung läuft aus",
+    "IDLE_ERROR_BODY": "Du wirst in Kürze wegen Inaktivität ausgeloggt!"
+  },
+  "MY_FAVOURITES_LINK": "Favoriten",
+  "DONT_HAVE_MIN_PERMISSIONS": "Für den Zugriff auf diese Betriebsstätte sind mindestens Viewer Rechte erforderlich",
+  "SITE_CURRENTLY_DISABLED": "Die Betriebsstätte ist aktuell deaktiviert",
+  "GXP_INFO": {
+    "NOT_VALIDATED": "Nicht validiert",
+    "VALIDATED": "Validiert",
+    "UNDEFINED_MSG": "Bitte überprüfen Sie die Entitätsebene",
+    "INFO_MODAL_DATA": {
+      "IsModuleValid": "API",
+      "IsDataSourceValid": "Datenquelle",
+      "IsRValid": "R-Server",
+      "IsEntityValid": "Entität"
+    }
+  },
+  "SEND_FEEDBACK": "Rückmeldung abschicken",
+  "UNDEFINED": "Nicht definiert",
+  "REPORT_ISSUE": "Report an issue/problem",
+  "VALIDATION_STATUS_OVERVIEW": "Übersicht über den Validierungsstatus"
+}

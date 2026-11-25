@@ -1,0 +1,40 @@
+<h3 class="mfm-paper-content_title">{{'VALIDATION_STATUS_OVERVIEW' | translate}}</h3>
+<mat-dialog-content>
+  <mat-accordion>
+    <mat-expansion-panel  *ngFor="let tab of data; index as i">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <b>{{tab.appName}}</b>
+        </mat-panel-title>
+        <mat-panel-description>
+          <app-gxp-icon size="small" [isValidated]="isValidated(tab)"></app-gxp-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <dl class="m-0 p-0 pt-4">
+        <dt class="text-left">{{tab.appName}} App</dt>
+        <dd class="text-right"><app-gxp-icon size="small" [isValidated]="tab.isValidated"></app-gxp-icon></dd>
+        @if (tab.data.backend !== undefined) {
+          <dt class="text-left ">{{'GXP_INFO.INFO_MODAL_DATA.IsModuleValid' | translate}}</dt>
+          <dd class="text-right"><app-gxp-icon size="small" [isValidated]="tab.data.backend"></app-gxp-icon></dd>
+        }
+        @if (tab.data.dataSource !== undefined) {
+          <dt class="text-left ">{{'GXP_INFO.INFO_MODAL_DATA.IsDataSourceValid' | translate}}</dt>
+          <dd class="text-right"><app-gxp-icon size="small" [isValidated]="tab.data.dataSource"></app-gxp-icon></dd>
+        }
+        @if (tab.data.calculationEngine !== undefined) {
+          <dt class="text-left ">{{'GXP_INFO.INFO_MODAL_DATA.IsRValid' | translate}}</dt>
+          <dd class="text-right">
+            <app-gxp-icon size="small" [isValidated]="tab.data.calculationEngine"></app-gxp-icon>
+          </dd>
+        }
+        @if (tab.data.entity !== undefined) {
+          <dt class="text-left ">{{'GXP_INFO.INFO_MODAL_DATA.IsEntityValid' | translate}}</dt>
+          <dd class="text-right"><app-gxp-icon size="small" [isValidated]="tab.data.entity"></app-gxp-icon></dd>
+        }
+      </dl>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="close()" cdkFocusInitial>{{ cancelText }}</button>
+</mat-dialog-actions>

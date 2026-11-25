@@ -1,0 +1,41 @@
+{
+  "DIGITAL_CLONE_LOGO_ALT": "Data Computation Platform",
+  "LOGOUT": "Logout",
+  "SETTINGS": "Settings",
+  "en": "English",
+  "de": "Deutsch",
+  "UPDATE": "Update",
+  "PRODUCTION_SITE": "Production site",
+  "LANGUAGE": "Language",
+  "DATE_FORMAT": "Date format",
+  "TIME_FORMAT": "Time format",
+  "SIDE_MENU": {
+    "API_SERVICE": "API Service"
+  },
+  "DETAILED_EXPLANATION": "Detailed explanation",
+  "VALIDATIONS": {
+    "CHROME_BROWSER_NOTIFICATION": "Your browser is not supported.\n\nWe recommend that you use the latest version of Chrome for the best DC experience."
+  },
+  "ERROR": {
+    "IDLE_ERROR_TITLE": "Session timeout",
+    "IDLE_ERROR_BODY": "You will be logged out due to inactivity!"
+  },
+  "MY_FAVOURITES_LINK": "Favorites",
+  "DONT_HAVE_MIN_PERMISSIONS": "You must have at least Viewer role to access this site",
+  "SITE_CURRENTLY_DISABLED": "The site is currently disabled",
+  "GXP_INFO": {
+    "NOT_VALIDATED": "Not validated",
+    "VALIDATED": "Validated",
+    "UNDEFINED_MSG": "Please take a look on entity level",
+    "INFO_MODAL_DATA": {
+      "IsModuleValid": "API",
+      "IsDataSourceValid": "Data Source",
+      "IsRValid": "R Server",
+      "IsEntityValid": "Entity"
+    }
+  },
+  "SEND_FEEDBACK": "Send Feedback",
+  "UNDEFINED": "Undefined",
+  "REPORT_ISSUE": "Report an issue/problem",
+  "VALIDATION_STATUS_OVERVIEW": "Validation Status Overview"
+}

@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": false,
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
+    "noImplicitUseStrict": true,
+    "ignoreDeprecations": "5.0",
+    "alwaysStrict": false,
+    "strict": false,
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/typings.d.ts"
+    ],
+    "lib": [
+      "es2017",
+      "es2019",
+      "dom"
+    ],
+    "paths": {
+      "angulartics2/*": ["angulartics2/*"]
+    },
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
+}

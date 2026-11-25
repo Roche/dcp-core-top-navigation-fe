@@ -1,0 +1,15 @@
+.auxiliary-section {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 19999;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0.5rem;
+}
+
+.auxiliary-section__element {
+  display: block;
+}
+

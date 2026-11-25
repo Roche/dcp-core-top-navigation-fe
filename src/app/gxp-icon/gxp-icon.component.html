@@ -1,0 +1,13 @@
+<div class="gxp-label px-2 d-flex align-items-center justify-content-center"
+     [ngClass]="{
+     'gxp-label-none': !isValidated && !isDisabled,
+     'gxp-label--small': size === 'small',
+     'gxp-label--disabled': isDisabled
+     }">
+  <ng-container *ngIf="!isDisabled; else isDisabledTmp">
+    <span>Non </span> GXP
+  </ng-container>
+  <ng-template #isDisabledTmp>
+    {{'UNDEFINED' | translate}}
+  </ng-template>
+</div>

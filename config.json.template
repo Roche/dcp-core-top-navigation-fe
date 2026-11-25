@@ -1,0 +1,7 @@
+{
+  "production": false,
+  "gatewayUrl": "https://api.example.com",
+  "helpUrl": "https://example.com/help",
+  "mailUrl": "mailto:support@example.com",
+  "issueUrl": "https://example.com/issues"
+}

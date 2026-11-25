@@ -1,0 +1,13 @@
+<app-top-navigation *ngIf="userIsLoaded.value" [appDontUseLayoutComponent]="true">
+</app-top-navigation>
+
+<div class="mat-drawer-backdrop "
+     [ngClass]="{
+       'mat-drawer-shown': forceDimOverlay,
+       'custom-sidedrwawer-width-460': applyCustomOverlayWidth,
+       'custom-sidedrwawer-width-920': applyCustomOverlayWidth2x
+      }"
+     (click)="closeCustomSidebar()"
+></div>
+
+<app-auxiliary-section/>

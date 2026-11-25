@@ -1,0 +1,16 @@
+.progress-bar {
+  z-index: 100000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
+
+// Track (unfilled part) of the top loader. In Angular Material 17 (MDC) the
+// track color is controlled by the --mdc-linear-progress-track-color variable,
+// not by a background on .mat-mdc-progress-bar-buffer. Follow the runtime
+// branding tint; keep the former blue (#c5cae9) as fallback.
+.progress-bar {
+  --mdc-linear-progress-track-color: var(--dcp-branding-primary-subtle, #c5cae9);
+}

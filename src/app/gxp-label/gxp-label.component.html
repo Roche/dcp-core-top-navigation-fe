@@ -1,0 +1,7 @@
+<app-gxp-icon (click)="onIconClick()"
+              [matTooltip]="isDisabled ? ('GXP_INFO.UNDEFINED_MSG' | translate) : ''"
+              [ngClass]="{'cursor-pointer': !isDisabled}"
+              class="user-select-none"
+              [isValidated]="isValidated"
+              [isDisabled]="isDisabled">
+</app-gxp-icon>

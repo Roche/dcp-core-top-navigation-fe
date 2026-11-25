@@ -1,0 +1,165 @@
+<app-top-loading-bar></app-top-loading-bar>
+
+<mat-toolbar class="docs-navbar-header pl-5 pr-5">
+  <h1 class="docs-navbar-header_title outline-none">
+    <img [attr.src]="logoSrc" [style.visibility]="logoSrc ? 'visible' : 'hidden'" width="222" height="40" [alt]="'DIGITAL_CLONE_LOGO_ALT' | translate" />
+  </h1>
+
+  <span class="docs-navbar-header_select ml-5 mr-3 d-flex align-items-center justify-content-around"
+        *ngIf="showMenu">
+    <span class="docs-navbar-header_select_label ml-3 mr-3">
+      {{"LANGUAGE" | translate}}
+    </span>
+
+    <button mat-button class="docs-navbar-header_select_button"
+            [matMenuTriggerFor]="itemTextMenu">
+      <div class="d-flex align-items-center justify-content-center">
+        {{translate.currentLang | translate}}
+          <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+      </div>
+      <mat-menu #itemTextMenu="matMenu">
+        <button mat-menu-item
+                *ngFor="let lang of translate.getLangs()"
+                angulartics2On="click"
+                angularticsAction="Click on change language"
+                angularticsCategory="Site header"
+                (click)="langChange(lang)">
+          <span [innerHTML]="lang | translate"></span>
+        </button>
+      </mat-menu>
+    </button>
+  </span>
+
+  <span class="docs-navbar-header_select d-flex align-items-center justify-content-around"
+        [matTooltip]="siteTimezone"
+        matTooltipPosition="above"
+        *ngIf="showMenu && selectedSite && showSiteSelect">
+          <span class="docs-navbar-header_select_label ml-3 mr-3">
+            {{"PRODUCTION_SITE" | translate}}
+          </span>
+
+          <button mat-button
+                  class="docs-navbar-header_select_button cursor-not-allowed"
+                  [matMenuTriggerFor]="itemTextMenu"
+                  [class.cursor-not-allowed]="!siteSelectionEnable.value"
+                  [disabled]="!siteSelectionEnable.value || getSiteLoading.value">
+            <div class="d-flex align-items-center justify-content-center">
+              {{selectedSite.Name}}
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </div>
+            <mat-menu #itemTextMenu="matMenu">
+              <button mat-menu-item
+                      *ngFor="let site of sites"
+                      angulartics2On="click"
+                      angularticsAction="Click on change site"
+                      angularticsCategory="Site header"
+                      [ngClass]="{'disabled': (!isTrueString(site.HasMinimumPermissions)
+                      || !isTrueString(site.IsEnable))}"
+                      (click)="siteChange(site.SiteId, (isTrueString(site.HasMinimumPermissions)
+                      && isTrueString(site.IsEnable)))"
+                      [matTooltip]="getSiteTooltip(isTrueString(site.HasMinimumPermissions),
+                      isTrueString(site.IsEnable))">
+                <span>{{site.Name}}</span>
+              </button>
+            </mat-menu>
+          </button>
+        </span>
+
+  <app-gxp-label class="ml-auto mr-2"></app-gxp-label>
+
+  <div *ngIf="showMenu && (helpUrl || mailUrl || issueUrl)">
+    <button mat-icon-button
+            class="mr-1 color-primary d-flex align-items-center justify-content-center"
+            [matTooltip]="'DETAILED_EXPLANATION' | translate"
+            matTooltipClass="scrollable-tooltip"
+            [matMenuTriggerFor]="menu">
+      <mat-icon>help_outline</mat-icon>
+
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item
+          class="no-highlight d-flex align-items-center justify-content-center"
+          angulartics2On="click"
+          angularticsAction="Click on toggle help"
+          angularticsCategory="Site header"
+          *ngIf="helpUrl"
+          [href]="helpUrl"
+          target="_blank">
+          <mat-icon>book</mat-icon>
+          <span [innerHTML]="'DETAILED_EXPLANATION' | translate"></span>
+        </a>
+        <a mat-menu-item
+          class="no-highlight d-flex align-items-center justify-content-center"
+          angulartics2On="click"
+          angularticsAction="Click on report issue"
+          angularticsCategory="Site header"
+          *ngIf="issueUrl"
+          [href]="issueUrl"
+          target="_blank">
+          <mat-icon>error_outline</mat-icon>
+          <span [innerHTML]="'REPORT_ISSUE' | translate"></span>
+        </a>
+        <a mat-menu-item
+          class="no-highlight d-flex align-items-center justify-content-center"
+          [href]="mailUrl"
+          *ngIf="mailUrl"
+          target="_blank"
+          angulartics2On="click"
+          angularticsAction="Click send feedback"
+          angularticsCategory="Site header">
+          <mat-icon>mail_outline</mat-icon>
+          <span [innerHTML]="'SEND_FEEDBACK' | translate"></span>
+        </a>
+
+      </mat-menu>
+    </button>
+  </div>
+
+  <app-top-button-section/>
+
+  <span class="docs-navbar-header_select mr-3 d-flex align-items-center justify-content-around" *ngIf="showMenu">
+          <button mat-button
+                  class="docs-navbar-header_select_button pl-0"
+                  [matTooltip]="userDisplayName + '\n\n' + userLevel"
+                  matTooltipClass="scrollable-tooltip"
+                  [matTooltipHideDelay]="20000000000000"
+                  [matMenuTriggerFor]="menu">
+            <span class="docs-navbar-header_select_label color-primary">
+              {{userInitials}}
+            </span>
+
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item
+                      angulartics2On="click"
+                      angularticsAction="Click on Api service"
+                      angularticsCategory="Site header"
+                      *ngIf="(isGlobalAdmin && hasSitesAssociated) || isGlobalApiUser"
+                      (click)="navigate(sharedConstants.appUrlSection + 'global' +
+                        '/api-service/user-client/list')">
+                 <mat-icon>extension</mat-icon>
+                <span [innerHTML]="'SIDE_MENU.API_SERVICE' | translate"></span>
+              </button>
+              <button mat-menu-item
+                      angulartics2On="click"
+                      angularticsAction="Click on settings"
+                      angularticsCategory="Site header"
+                      (click)="openSettings()">
+                <mat-icon>settings</mat-icon>
+                <span [innerHTML]="'SETTINGS' | translate"></span>
+              </button>
+              <button mat-menu-item
+                      angulartics2On="click"
+                      angularticsAction="Click on logout"
+                      angularticsCategory="Site header"
+                      (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span [innerHTML]="'LOGOUT' | translate"></span>
+              </button>
+
+            </mat-menu>
+
+          </button>
+        </span>
+
+  <img class="docs-navbar-header_logo ml-3" alt="" [src]="baseAppPath + 'assets/images/company-logo.png'"/>
+
+</mat-toolbar>

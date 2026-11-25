@@ -1,0 +1,32 @@
+<h2 class="dialog-title">{{'SETTINGS' | translate}}</h2>
+<mat-dialog-content class="p-0 pt-3">
+  <div [formGroup]="form">
+    <div class="mb-3">
+      <mat-form-field class="full-width">
+        <mat-label>{{ 'DATE_FORMAT' | translate }}</mat-label>
+
+        <mat-select formControlName="dateFormat" name="dateFormat">
+          <mat-option *ngFor="let item of dateFormatData" [value]="item.value">
+            {{ item.text }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-form-field class="full-width">
+        <mat-label>{{ 'TIME_FORMAT' | translate }}</mat-label>
+
+        <mat-select formControlName="timeFormat" name="timeFormat">
+          <mat-option *ngFor="let item of timeFormatData" [value]="item.value">
+            {{ item.text }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="mb-3 d-flex align-items-center justify-content-end">
+      <button mat-raised-button (click)="saveSettings()">
+        {{'UPDATE' | translate}}
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>
